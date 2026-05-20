@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 300,
+
+  "data": {
+    "url": "Int_table2.csv"
+  },
+
+  "transform": [
+    {
+      "fold": ["2024", "2025"],
+      "as": ["Year", "Spend"]
+    }
+  ],
+
+  "mark": {
+    "type": "bar"
+  },
+
+  "params": [
+    {
+      "name": "yearSelect",
+      "select": {
+        "type": "point",
+        "fields": ["Year"]
+      },
+      "bind": "legend"
+    }
+  ],
+
+  "encoding": {
+
+    "x": {
+      "field": "Reason",
+      "type": "nominal",
+      "axis": {
+        "labelAngle": -35,
+        "labelFontSize": 10
+      },
+      "title": "Reason"
+    },
+
+    "y": {
+      "field": "Spend",
+      "type": "quantitative",
+      "axis": {
+        "title": "Spend ($M)"
+      }
+    },
+
+    "xOffset": {
+      "field": "Year"
+    },
+
+    "color": {
+      "field": "Year",
+      "type": "nominal",
+      "scale": {
+        "range": ["#2563eb", "#f97316"]
+      }
+    },
+
+    "opacity": {
+      "condition": {
+        "param": "yearSelect"
+      },
+      "value": 0.3
+    },
+
+    "tooltip": [
+      {"field": "Reason"},
+      {"field": "Year"},
+      {"field": "Spend"}
+    ]
+  }
+}

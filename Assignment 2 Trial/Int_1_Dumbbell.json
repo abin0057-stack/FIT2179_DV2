@@ -1,0 +1,93 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 240,
+
+  "data": {
+    "url": "Int_Table1.csv"
+  },
+
+  "layer": [
+
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#cbd5e1"
+      },
+
+      "encoding": {
+        "y": {
+          "field": "Country",
+          "type": "nominal",
+          "sort": "-x",
+          "axis": {
+            "labelFontSize": 10
+          }
+        },
+
+        "x": {
+          "field": "2024",
+          "type": "quantitative"
+        },
+
+        "x2": {
+          "field": "2025"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 90,
+        "color": "#2563eb"
+      },
+
+      "encoding": {
+        "y": {
+          "field": "Country",
+          "type": "nominal"
+        },
+
+        "x": {
+          "field": "2024",
+          "type": "quantitative"
+        },
+
+        "tooltip": [
+          {"field": "Country"},
+          {"field": "2024"}
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 90,
+        "color": "#ef4444"
+      },
+
+      "encoding": {
+        "y": {
+          "field": "Country",
+          "type": "nominal"
+        },
+
+        "x": {
+          "field": "2025",
+          "type": "quantitative"
+        },
+
+        "tooltip": [
+          {"field": "Country"},
+          {"field": "2025"}
+        ]
+      }
+    }
+  ]
+
+}
