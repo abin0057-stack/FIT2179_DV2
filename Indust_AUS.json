@@ -1,0 +1,109 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 520,
+  "height": 400,
+
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+
+  "data": {
+    "url": "Industry_TableAUS.csv"
+  },
+
+  "transform": [
+    {
+      "filter": "datum.Industry !== 'Tourism Characteristic Industries' && datum.Industry !== 'Tourism Connected Industries'"
+    },
+    {
+      "calculate": "toNumber(datum.Count)",
+      "as": "Count"
+    },
+    {
+      "calculate": "datum.Industry === 'Accommodation' || datum.Industry === 'Cafes, restaurants and takeaway food services' || datum.Industry === 'Casinos and other gambling services' || datum.Industry === 'Clubs, pubs, taverns and bars' || datum.Industry === 'Cultural services' || datum.Industry === 'Motor vehicle hiring' || datum.Industry === 'Other sports and recreation services' || datum.Industry === 'Passenger transport' || datum.Industry === 'Taxi transport' || datum.Industry === 'Travel agency and tour operator services' ? 'Characteristic' : 'Connected'",
+      "as": "Group"
+    }
+  ],
+
+  "mark": {
+    "type": "circle",
+    "filled": true,
+    "opacity": 0.8,
+    "stroke": "white",
+    "strokeWidth": 0.4
+  },
+
+  "encoding": {
+
+    "x": {
+      "field": "EmploymentSize",
+      "type": "ordinal",
+      "scale": {
+        "domain": ["Micro (1-4)", "Small (5-19)", "Medium (20-199)", "Large (200+)"]
+      },
+      "axis": {
+        "labelAngle": 90
+      }
+    },
+
+    "y": {
+      "field": "Industry",
+      "type": "nominal",
+      "axis": {
+        "labelLimit": 180
+      }
+    },
+
+    "size": {
+      "field": "Count",
+      "type": "quantitative",
+      "scale": {
+        "type": "sqrt",
+        "domain": [0, 32000],
+        "range": [25, 800]
+      },
+      "legend": {
+        "title": "No. of Businesses",
+        "labelColor": "#d8e8f0",
+        "titleColor": "#d8e8f0",
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "values": [1000, 5000, 10000, 20000, 30000],
+        "labelExpr": "datum.value === 30000 ? '30,000+' : format(datum.value, ',')"
+      }
+    },
+
+    "color": {
+      "field": "Group",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Characteristic", "Connected"],
+        "range": ["#3dd6c8", "#f0c97a"]
+      }
+    },
+
+    "tooltip": [
+      { "field": "Industry" },
+      { "field": "EmploymentSize" },
+      { "field": "Count" },
+      { "field": "Group" }
+    ]
+  },
+
+  "config": {
+    "background": "transparent",
+    "view": { "stroke": null },
+
+    "axis": {
+      "labelColor": "white",
+      "titleColor": "white"
+    },
+
+    "legend": {
+      "labelColor": "white",
+      "titleColor": "white"
+    }
+  }
+}

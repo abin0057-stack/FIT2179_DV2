@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 280,
+
+  "data": {
+    "url": "TS_table12.csv"
+  },
+
+  "mark": {
+    "type": "rect",
+    "cornerRadius": 3
+  },
+
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "axis": {
+        "labelColor": "#d8e8f0",
+        "titleColor": "#d8e8f0",
+        "labelAngle": -35,
+        "labelFontSize": 10,
+        "title": null
+      }
+    },
+    "y": {
+      "field": "State",
+      "type": "nominal",
+      "sort": ["NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT"],
+      "axis": {
+        "labelColor": "#d8e8f0",
+        "titleColor": "#d8e8f0",
+        "labelFontSize": 11,
+        "title": null
+      }
+    },
+    "color": {
+      "field": "Value",
+      "type": "quantitative",
+      "scale": {
+        "domain": [1, 11],
+        "range": ["#0a1e30", "#3dd6c8"]
+      },
+      "legend": {
+        "title": "GVA (%)",
+        "titleColor": "#d8e8f0",
+        "labelColor": "#d8e8f0",
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "gradientLength": 120
+      }
+    },
+    "tooltip": [
+      {"field": "State", "type": "nominal"},
+      {"field": "Year", "type": "ordinal"},
+      {"field": "Value", "type": "quantitative", "title": "GVA (%)"}
+    ]
+  },
+
+  "config": {
+    "background": "transparent",
+    "view": {"stroke": null},
+    "axis": {
+      "grid": false
+    }
+  }
+}

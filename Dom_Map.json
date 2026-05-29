@@ -1,0 +1,264 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 420,
+
+  "params": [
+    {
+      "name": "MetricSelect",
+      "value": "DayTrips",
+      "bind": {
+        "input": "select",
+        "options": ["DayTrips", "Expenditure"],
+        "labels": ["Day Trips ('000)", "Regional Expenditure ($M)"],
+        "name": "Metric: "
+      }
+    },
+    {
+      "name": "QuarterSelect",
+      "value": "December 2025",
+      "bind": {
+        "input": "select",
+        "options": [
+          "March 2025",
+          "June 2025",
+          "September 2025",
+          "December 2025"
+        ],
+        "name": "Quarter: "
+      }
+    }
+  ],
+
+  "layer": [
+
+    {
+      "data": {
+        "url": "aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "STE_2021_AUST_GDA94"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.STE_NAME21",
+          "from": {
+            "data": {
+              "url": "Dom_Table5b.csv"
+            },
+            "key": "State",
+            "fields": ["Quarter", "DayTrips", "Expenditure"]
+          }
+        },
+        {
+          "filter": "datum.Quarter === QuarterSelect"
+        },
+        {
+          "calculate": "MetricSelect === 'DayTrips' ? toNumber(datum.DayTrips) : toNumber(datum.Expenditure)",
+          "as": "DisplayValue"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#1a3a4a",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "color": {
+          "field": "DisplayValue",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "tealblues",
+            "domainMin": 0,
+            "domainMax": {"expr": "MetricSelect === 'DayTrips' ? 22000 : 4000"}
+          },
+          "legend": {
+            "title": null,
+            "labelColor": "#d8e8f0",
+            "titleColor": "#d8e8f0",
+            "labelFontSize": 11,
+            "gradientLength": 120
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.STE_NAME21",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "DisplayValue",
+            "type": "quantitative",
+            "title": "Value",
+            "format": ","
+          }
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "url": "aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "STE_2021_AUST_GDA94"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "rgba(61,214,200,0.3)",
+        "strokeWidth": 0.5
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {"State": "NSW", "latitude": -32.5, "longitude": 146.5},
+          {"State": "VIC", "latitude": -37.0, "longitude": 144.5},
+          {"State": "QLD", "latitude": -22.0, "longitude": 144.0},
+          {"State": "SA",  "latitude": -30.0, "longitude": 136.0},
+          {"State": "WA",  "latitude": -25.0, "longitude": 121.0},
+          {"State": "TAS", "latitude": -42.0, "longitude": 146.5},
+          {"State": "NT",  "latitude": -19.0, "longitude": 133.0},
+          {"State": "ACT", "latitude": -35.5, "longitude": 149.0}
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "State",
+          "from": {
+            "data": {
+              "values": [
+                {"Code": "NSW", "State": "New South Wales"},
+                {"Code": "VIC", "State": "Victoria"},
+                {"Code": "QLD", "State": "Queensland"},
+                {"Code": "SA",  "State": "South Australia"},
+                {"Code": "WA",  "State": "Western Australia"},
+                {"Code": "TAS", "State": "Tasmania"},
+                {"Code": "NT",  "State": "Northern Territory"},
+                {"Code": "ACT", "State": "Australian Capital Territory"}
+              ]
+            },
+            "key": "Code",
+            "fields": ["State"]
+          }
+        },
+        {
+          "lookup": "State",
+          "from": {
+            "data": {
+              "url": "Dom_Table5b.csv"
+            },
+            "key": "State",
+            "fields": ["Quarter", "DayTrips", "Expenditure"]
+          }
+        },
+        {
+          "filter": "datum.Quarter === QuarterSelect"
+        },
+        {
+          "calculate": "MetricSelect === 'DayTrips' ? toNumber(datum.DayTrips) : toNumber(datum.Expenditure)",
+          "as": "DisplayValue"
+        },
+        {
+          "calculate": "datum.State_lookup + ' ' + format(datum.DisplayValue, ',')",
+          "as": "Label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#ffffff",
+        "dy": -6
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {"field": "State", "type": "nominal"}
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {"State": "NSW", "latitude": -32.5, "longitude": 146.5},
+          {"State": "VIC", "latitude": -37.0, "longitude": 144.5},
+          {"State": "QLD", "latitude": -22.0, "longitude": 144.0},
+          {"State": "SA",  "latitude": -30.0, "longitude": 136.0},
+          {"State": "WA",  "latitude": -25.0, "longitude": 121.0},
+          {"State": "TAS", "latitude": -42.0, "longitude": 146.5},
+          {"State": "NT",  "latitude": -19.0, "longitude": 133.0},
+          {"State": "ACT", "latitude": -35.5, "longitude": 149.0}
+        ]
+      },
+      "transform": [
+        {
+          "lookup": "State",
+          "from": {
+            "data": {
+              "values": [
+                {"Code": "NSW", "FullState": "New South Wales"},
+                {"Code": "VIC", "FullState": "Victoria"},
+                {"Code": "QLD", "FullState": "Queensland"},
+                {"Code": "SA",  "FullState": "South Australia"},
+                {"Code": "WA",  "FullState": "Western Australia"},
+                {"Code": "TAS", "FullState": "Tasmania"},
+                {"Code": "NT",  "FullState": "Northern Territory"},
+                {"Code": "ACT", "FullState": "Australian Capital Territory"}
+              ]
+            },
+            "key": "Code",
+            "fields": ["FullState"]
+          }
+        },
+        {
+          "lookup": "FullState",
+          "from": {
+            "data": {
+              "url": "Dom_Table5b.csv"
+            },
+            "key": "State",
+            "fields": ["Quarter", "DayTrips", "Expenditure"]
+          }
+        },
+        {
+          "filter": "datum.Quarter === QuarterSelect"
+        },
+        {
+          "calculate": "MetricSelect === 'DayTrips' ? toNumber(datum.DayTrips) : toNumber(datum.Expenditure)",
+          "as": "DisplayValue"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 9,
+        "color": "#d8e8f0",
+        "dy": 6
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "text": {
+          "field": "DisplayValue",
+          "type": "quantitative",
+          "format": ","
+        }
+      }
+    }
+
+  ],
+
+  "projection": {
+    "type": "mercator"
+  },
+
+  "config": {
+    "background": "transparent",
+    "view": {"stroke": null}
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 400,
+
+  "data": {
+    "url": "Industry_TableVIC.csv"
+  },
+
+  "transform": [
+    {
+      "filter": "datum.Industry !== 'Tourism Characteristic Industries' && datum.Industry !== 'Tourism Connected Industries'"
+    },
+    {
+      "calculate": "toNumber(datum.Count)",
+      "as": "Count"
+    },
+    {
+      "filter": "datum.Count > 0"
+    },
+    {
+      "calculate": "datum.Industry === 'Accommodation' || datum.Industry === 'Cafes, restaurants and takeaway food services' || datum.Industry === 'Casinos and other gambling services' || datum.Industry === 'Clubs, pubs, taverns and bars' || datum.Industry === 'Cultural services' || datum.Industry === 'Motor vehicle hiring' || datum.Industry === 'Other sports and recreation services' || datum.Industry === 'Passenger transport' || datum.Industry === 'Taxi transport' || datum.Industry === 'Travel agency and tour operator services' ? 'Characteristic' : 'Connected'",
+      "as": "Group"
+    }
+  ],
+
+  "mark": {
+    "type": "bar",
+    "cornerRadiusTopLeft": 3,
+    "cornerRadiusTopRight": 3
+  },
+
+  "encoding": {
+    "y": {
+      "field": "Industry",
+      "type": "nominal",
+      "sort": {"field": "Count", "op": "sum", "order": "descending"},
+      "axis": {
+        "labelColor": "#d8e8f0",
+        "labelFontSize": 10,
+        "labelLimit": 200,
+        "title": null,
+        "grid": false
+      }
+    },
+    "x": {
+      "field": "Count",
+      "type": "quantitative",
+      "stack": "normalize",
+      "axis": {
+        "labelColor": "#d8e8f0",
+        "titleColor": "#d8e8f0",
+        "gridColor": "rgba(255,255,255,0.06)",
+        "format": ".0%",
+        "title": "Share of Businesses (%)"
+      }
+    },
+    "color": {
+      "field": "EmploymentSize",
+      "type": "nominal",
+      "sort": ["Micro (1-4)", "Small (5-19)", "Medium (20-199)", "Large (200+)"],
+      "scale": {
+        "domain": ["Micro (1-4)", "Small (5-19)", "Medium (20-199)", "Large (200+)"],
+        "range": ["#3dd6c8", "#70b8ff", "#f0c97a", "#ff8a7a"]
+      },
+      "legend": {
+        "title": "Employment Size",
+        "titleColor": "#d8e8f0",
+        "labelColor": "#d8e8f0",
+        "labelFontSize": 11,
+        "titleFontSize": 12
+      }
+    },
+    "tooltip": [
+      {"field": "Industry", "type": "nominal"},
+      {"field": "EmploymentSize", "type": "nominal", "title": "Size"},
+      {"field": "Count", "type": "quantitative", "title": "Businesses", "format": ","},
+      {"field": "Group", "type": "nominal", "title": "Group"}
+    ]
+  },
+
+  "config": {
+    "background": "transparent",
+    "view": {"stroke": null},
+    "axis": {
+      "labelColor": "white",
+      "titleColor": "white"
+    },
+    "legend": {
+      "labelColor": "white",
+      "titleColor": "white"
+    }
+  }
+}

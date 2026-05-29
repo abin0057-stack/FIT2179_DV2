@@ -1,0 +1,153 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 400,
+  "height": 450,
+
+  "data": {
+    "url": "Int_table6.csv"
+  },
+
+  "params": [
+    {
+      "name": "MetricSelect",
+      "value": "Trips",
+      "bind": {
+        "input": "select",
+        "options": ["Trips", "Nights", "Expenditure"],
+        "labels": ["Trips", "Nights", "Expenditure ($M)"],
+        "name": "Metric: "
+      }
+    }
+  ],
+
+  "transform": [
+    {
+      "pivot": "Year",
+      "value": "Value",
+      "groupby": ["Region", "Metric"]
+    },
+    {
+      "calculate": "toNumber(datum['2024'])",
+      "as": "Val2024"
+    },
+    {
+      "calculate": "toNumber(datum['2025'])",
+      "as": "Val2025"
+    },
+    {
+      "calculate": "((datum.Val2025 - datum.Val2024) / datum.Val2024) * 100",
+      "as": "GrowthPct"
+    },
+    {
+      "filter": "datum.Metric === MetricSelect"
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 1,
+        "color": "rgba(255,255,255,0.15)"
+      },
+      "encoding": {
+        "y": {
+          "field": "Region",
+          "type": "nominal",
+          "sort": {"field": "GrowthPct", "order": "descending"}
+        },
+        "x": {"value": 0},
+        "x2": {"value": 500}
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 1.5,
+        "strokeDash": [4, 3],
+        "color": "rgba(255,255,255,0.3)"
+      },
+      "encoding": {
+        "x": {
+          "datum": 0,
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 140,
+        "opacity": 0.95
+      },
+      "encoding": {
+        "x": {
+          "field": "GrowthPct",
+          "type": "quantitative",
+          "title": "Growth % (2024 to 2025)",
+          "axis": {
+            "labelColor": "#d8e8f0",
+            "titleColor": "#d8e8f0",
+            "gridColor": "rgba(255,255,255,0.06)",
+            "format": ".1f"
+          }
+        },
+        "y": {
+          "field": "Region",
+          "type": "nominal",
+          "sort": {"field": "GrowthPct", "order": "descending"},
+          "axis": {
+            "labelColor": "#d8e8f0",
+            "labelFontSize": 11,
+            "title": null
+          }
+        },
+        "color": {
+          "condition": {
+            "test": "datum.GrowthPct >= 0",
+            "value": "#3dd6c8"
+          },
+          "value": "#ff8a7a"
+        },
+        "tooltip": [
+          {"field": "Region", "type": "nominal"},
+          {"field": "GrowthPct", "type": "quantitative", "title": "Growth (%)", "format": ".1f"},
+          {"field": "Val2024", "type": "quantitative", "title": "2024"},
+          {"field": "Val2025", "type": "quantitative", "title": "2025"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 10,
+        "color": "#d8e8f0"
+      },
+      "encoding": {
+        "x": {
+          "field": "GrowthPct",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "Region",
+          "type": "nominal",
+          "sort": {"field": "GrowthPct", "order": "descending"}
+        },
+        "text": {
+          "field": "GrowthPct",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "background": "transparent",
+    "view": {"stroke": null}
+  }
+}

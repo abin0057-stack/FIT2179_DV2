@@ -1,0 +1,100 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 550,
+  "height": 200,
+
+  "data": {
+    "url": "TS_table1.csv"
+  },
+
+  "params": [
+    {
+      "name": "StateSelect",
+      "value": "NSW",
+
+      "bind": {
+        "input": "select",
+        "options": [
+          "NSW",
+          "VIC",
+          "QLD",
+          "SA",
+          "WA",
+          "TAS",
+          "NT",
+          "ACT"
+        ],
+        "name": "State: "
+      }
+    }
+  ],
+
+  "transform": [
+    {
+      "filter": "datum.State == StateSelect"
+    }
+  ],
+
+  "mark": {
+    "type": "area",
+    "line": {
+      "color": "#7c2d12",
+      "strokeWidth": 2
+    },
+    "color": "#d97706",
+    "opacity": 0.75
+  },
+
+  "encoding": {
+
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "axis": {
+        "labelAngle": -35,
+        "labelFontSize": 9,
+        "title": null
+      }
+    },
+
+    "y": {
+      "field": "GSP_Million",
+      "type": "quantitative",
+      "title": null,
+      "axis": {
+        "labelFontSize": 9
+      }
+    },
+
+    "tooltip": [
+      { "field": "Year" },
+      { "field": "State" },
+      {
+        "field": "GSP_Million",
+        "title": "GSP ($M)"
+      }
+    ]
+  },
+
+  "config": {
+
+    "background": "#fef3c7",
+
+    "view": {
+      "stroke": null
+    },
+
+    "axis": {
+      "gridColor": "#fde68a",
+      "labelColor": "#111827"
+    }
+  },
+
+  "title": {
+    "text": "Tourism GSP Trend",
+    "fontSize": 13,
+    "color": "#111827"
+  }
+}
+

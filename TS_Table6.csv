@@ -1,0 +1,129 @@
+Industry,Category,State,GVA
+Accommodation,Characteristic,New South Wales,3152
+Accommodation,Characteristic,Victoria,2110
+Accommodation,Characteristic,Queensland,2575
+Accommodation,Characteristic,South Australia,532
+Accommodation,Characteristic,Western Australia,1039
+Accommodation,Characteristic,Tasmania,315
+Accommodation,Characteristic,Northern Territory,196
+Accommodation,Characteristic,Australian Capital Territory,229
+Ownership of dwellings,Characteristic,New South Wales,2688
+Ownership of dwellings,Characteristic,Victoria,2057
+Ownership of dwellings,Characteristic,Queensland,1607
+Ownership of dwellings,Characteristic,South Australia,674
+Ownership of dwellings,Characteristic,Western Australia,812
+Ownership of dwellings,Characteristic,Tasmania,210
+Ownership of dwellings,Characteristic,Northern Territory,65
+Ownership of dwellings,Characteristic,Australian Capital Territory,135
+Cafes restaurants and takeaway food services,Characteristic,New South Wales,2573
+Cafes restaurants and takeaway food services,Characteristic,Victoria,1992
+Cafes restaurants and takeaway food services,Characteristic,Queensland,1953
+Cafes restaurants and takeaway food services,Characteristic,South Australia,497
+Cafes restaurants and takeaway food services,Characteristic,Western Australia,788
+Cafes restaurants and takeaway food services,Characteristic,Tasmania,254
+Cafes restaurants and takeaway food services,Characteristic,Northern Territory,121
+Cafes restaurants and takeaway food services,Characteristic,Australian Capital Territory,150
+Clubs pubs taverns and bars,Characteristic,New South Wales,977
+Clubs pubs taverns and bars,Characteristic,Victoria,756
+Clubs pubs taverns and bars,Characteristic,Queensland,744
+Clubs pubs taverns and bars,Characteristic,South Australia,188
+Clubs pubs taverns and bars,Characteristic,Western Australia,305
+Clubs pubs taverns and bars,Characteristic,Tasmania,96
+Clubs pubs taverns and bars,Characteristic,Northern Territory,47
+Clubs pubs taverns and bars,Characteristic,Australian Capital Territory,59
+Rail transport,Characteristic,New South Wales,148
+Rail transport,Characteristic,Victoria,115
+Rail transport,Characteristic,Queensland,149
+Rail transport,Characteristic,South Australia,35
+Rail transport,Characteristic,Western Australia,72
+Rail transport,Characteristic,Tasmania,22
+Rail transport,Characteristic,Northern Territory,20
+Rail transport,Characteristic,Australian Capital Territory,16
+Taxi transport,Characteristic,New South Wales,203
+Taxi transport,Characteristic,Victoria,174
+Taxi transport,Characteristic,Queensland,200
+Taxi transport,Characteristic,South Australia,43
+Taxi transport,Characteristic,Western Australia,78
+Taxi transport,Characteristic,Tasmania,34
+Taxi transport,Characteristic,Northern Territory,20
+Taxi transport,Characteristic,Australian Capital Territory,19
+Other road transport,Characteristic,New South Wales,277
+Other road transport,Characteristic,Victoria,221
+Other road transport,Characteristic,Queensland,220
+Other road transport,Characteristic,South Australia,58
+Other road transport,Characteristic,Western Australia,97
+Other road transport,Characteristic,Tasmania,26
+Other road transport,Characteristic,Northern Territory,18
+Other road transport,Characteristic,Australian Capital Territory,28
+Air water and other transport,Characteristic,New South Wales,1999
+Air water and other transport,Characteristic,Victoria,1679
+Air water and other transport,Characteristic,Queensland,2138
+Air water and other transport,Characteristic,Western Australia,1089
+Air water and other transport,Characteristic,South Australia,520
+Air water and other transport,Characteristic,Tasmania,300
+Air water and other transport,Characteristic,Northern Territory,276
+Air water and other transport,Characteristic,Australian Capital Territory,193
+Motor vehicle hiring,Characteristic,New South Wales,290
+Motor vehicle hiring,Characteristic,Victoria,223
+Motor vehicle hiring,Characteristic,Queensland,284
+Motor vehicle hiring,Characteristic,South Australia,63
+Motor vehicle hiring,Characteristic,Western Australia,122
+Motor vehicle hiring,Characteristic,Tasmania,32
+Motor vehicle hiring,Characteristic,Northern Territory,39
+Motor vehicle hiring,Characteristic,Australian Capital Territory,14
+Travel agency and tour operator services,Characteristic,New South Wales,1608
+Travel agency and tour operator services,Characteristic,Victoria,1152
+Travel agency and tour operator services,Characteristic,Queensland,1497
+Travel agency and tour operator services,Characteristic,South Australia,191
+Travel agency and tour operator services,Characteristic,Western Australia,476
+Travel agency and tour operator services,Characteristic,Tasmania,108
+Travel agency and tour operator services,Characteristic,Northern Territory,127
+Travel agency and tour operator services,Characteristic,Australian Capital Territory,65
+Cultural services,Characteristic,New South Wales,304
+Cultural services,Characteristic,Victoria,289
+Cultural services,Characteristic,Queensland,318
+Cultural services,Characteristic,South Australia,50
+Cultural services,Characteristic,Western Australia,102
+Cultural services,Characteristic,Tasmania,43
+Cultural services,Characteristic,Northern Territory,29
+Cultural services,Characteristic,Australian Capital Territory,17
+Casinos and other gambling services,Characteristic,New South Wales,119
+Casinos and other gambling services,Characteristic,Victoria,88
+Casinos and other gambling services,Characteristic,Queensland,103
+Casinos and other gambling services,Characteristic,South Australia,23
+Casinos and other gambling services,Characteristic,Western Australia,35
+Casinos and other gambling services,Characteristic,Tasmania,14
+Casinos and other gambling services,Characteristic,Northern Territory,8
+Casinos and other gambling services,Characteristic,Australian Capital Territory,7
+Other sports and recreation services,Characteristic,New South Wales,521
+Other sports and recreation services,Characteristic,Victoria,513
+Other sports and recreation services,Characteristic,Queensland,535
+Other sports and recreation services,Characteristic,South Australia,80
+Other sports and recreation services,Characteristic,Western Australia,161
+Other sports and recreation services,Characteristic,Tasmania,65
+Other sports and recreation services,Characteristic,Northern Territory,48
+Other sports and recreation services,Characteristic,Australian Capital Territory,28
+Automotive fuel retailing,Connected,New South Wales,261
+Automotive fuel retailing,Connected,Victoria,184
+Automotive fuel retailing,Connected,Queensland,195
+Automotive fuel retailing,Connected,South Australia,51
+Automotive fuel retailing,Connected,Western Australia,87
+Automotive fuel retailing,Connected,Tasmania,21
+Automotive fuel retailing,Connected,Northern Territory,12
+Automotive fuel retailing,Connected,Australian Capital Territory,14
+Other retail trade,Connected,New South Wales,2699
+Other retail trade,Connected,Victoria,1838
+Other retail trade,Connected,Queensland,1852
+Other retail trade,Connected,South Australia,442
+Other retail trade,Connected,Western Australia,749
+Other retail trade,Connected,Tasmania,228
+Other retail trade,Connected,Northern Territory,114
+Other retail trade,Connected,Australian Capital Territory,191
+Education and training,Connected,New South Wales,1539
+Education and training,Connected,Victoria,1268
+Education and training,Connected,Queensland,725
+Education and training,Connected,South Australia,184
+Education and training,Connected,Western Australia,306
+Education and training,Connected,Tasmania,61
+Education and training,Connected,Northern Territory,40
+Education and training,Connected,Australian Capital Territory,115

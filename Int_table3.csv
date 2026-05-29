@@ -1,0 +1,27 @@
+State,Metric,Value2024,Value2025
+New South Wales,Trips,3806,4110
+Victoria,Trips,2708,2827
+Queensland,Trips,2158,2368
+South Australia,Trips,440,445
+Western Australia,Trips,865,1068
+Tasmania,Trips,254,279
+Northern Territory,Trips,221,255
+Australian Capital Territory,Trips,215,199
+
+New South Wales,Nights,100829,105934
+Victoria,Nights,80266,78822
+Queensland,Nights,53254,55611
+South Australia,Nights,13592,14721
+Western Australia,Nights,31304,41982
+Tasmania,Nights,4959,5046
+Northern Territory,Nights,4608,4420
+Australian Capital Territory,Nights,5431,5614
+
+New South Wales,Expenditure,12025,15040
+Victoria,Expenditure,9046,9676
+Queensland,Expenditure,6220,7485
+South Australia,Expenditure,1348,1761
+Western Australia,Expenditure,2625,3405
+Tasmania,Expenditure,551,712
+Northern Territory,Expenditure,468,527
+Australian Capital Territory,Expenditure,627,587

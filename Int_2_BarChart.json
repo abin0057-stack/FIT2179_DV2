@@ -1,0 +1,249 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 300,
+
+  "data": {
+    "url": "Int_table2.csv"
+  },
+
+  "transform": [
+    {
+      "fold": ["2024", "2025"],
+      "as": ["Year", "Spend"]
+    },
+    {
+      "calculate": "toNumber(datum.Spend)",
+      "as": "Spend"
+    }
+  ],
+
+  "layer": [
+
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusTopLeft": 4,
+        "cornerRadiusTopRight": 4
+      },
+
+      "params": [
+        {
+          "name": "yearSelect",
+          "select": {
+            "type": "point",
+            "fields": ["Year"]
+          },
+          "bind": "legend"
+        }
+      ],
+
+      "encoding": {
+        "x": {
+          "field": "Reason",
+          "type": "nominal",
+          "sort": {"field": "Spend", "op": "sum", "order": "descending"},
+          "axis": {
+            "labelAngle": -35,
+            "labelFontSize": 10,
+            "labelColor": "#d8e8f0",
+            "titleColor": "#d8e8f0",
+            "title": null
+          }
+        },
+        "y": {
+          "field": "Spend",
+          "type": "quantitative",
+          "axis": {
+            "title": "Spend ($M)",
+            "labelColor": "#d8e8f0",
+            "titleColor": "#d8e8f0",
+            "gridColor": "rgba(255,255,255,0.06)"
+          }
+        },
+        "xOffset": {
+          "field": "Year",
+          "type": "nominal"
+        },
+        "color": {
+          "field": "Year",
+          "type": "nominal",
+          "scale": {
+            "domain": ["2024", "2025"],
+            "range": ["#f0c97a", "#3dd6c8"]
+          },
+          "legend": {
+            "title": "Year",
+            "labelColor": "#d8e8f0",
+            "titleColor": "#d8e8f0",
+            "labelFontSize": 11,
+            "titleFontSize": 12
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "yearSelect",
+            "value": 1
+          },
+          "value": 0.25
+        },
+        "tooltip": [
+          {"field": "Reason", "type": "nominal"},
+          {"field": "Year", "type": "nominal"},
+          {"field": "Spend", "type": "quantitative", "title": "Spend ($M)", "format": ","}
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "pivot": "Year",
+          "value": "Spend",
+          "groupby": ["Reason"]
+        },
+        {
+          "calculate": "toNumber(datum['2024'])",
+          "as": "Val2024"
+        },
+        {
+          "calculate": "toNumber(datum['2025'])",
+          "as": "Val2025"
+        },
+        {
+          "calculate": "((datum.Val2025 - datum.Val2024) / datum.Val2024) * 100",
+          "as": "PctChange"
+        },
+        {
+          "calculate": "datum.PctChange >= 0 ? '+' + format(datum.PctChange, '.1f') + '%' : format(datum.PctChange, '.1f') + '%'",
+          "as": "PctLabel"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dy": -10,
+        "fontSize": 9
+      },
+      "encoding": {
+        "x": {
+          "field": "Reason",
+          "type": "nominal",
+          "sort": {"field": "Val2025", "op": "sum", "order": "descending"}
+        },
+        "y": {
+          "field": "Val2025",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "PctLabel",
+          "type": "nominal"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.PctChange >= 0",
+            "value": "#3dd6c8"
+          },
+          "value": "#ff8a7a"
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {"filter": "datum.Reason === 'Holiday' && datum.Year === '2025'"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dy": -28,
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#3dd6c8"
+      },
+      "encoding": {
+        "x": {
+          "field": "Reason",
+          "type": "nominal",
+          "sort": {"field": "Spend", "op": "sum", "order": "descending"}
+        },
+        "xOffset": {
+          "field": "Year",
+          "type": "nominal"
+        },
+        "y": {
+          "field": "Spend",
+          "type": "quantitative"
+        },
+        "text": {"value": "Largest category"}
+      }
+    },
+
+    {
+      "transform": [
+        {"filter": "datum.Reason === 'Education' && datum.Year === '2025'"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dy": -28,
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#3dd6c8"
+      },
+      "encoding": {
+        "x": {
+          "field": "Reason",
+          "type": "nominal",
+          "sort": {"field": "Spend", "op": "sum", "order": "descending"}
+        },
+        "xOffset": {
+          "field": "Year",
+          "type": "nominal"
+        },
+        "y": {
+          "field": "Spend",
+          "type": "quantitative"
+        },
+        "text": {"value": "Highest surge"}
+      }
+    },
+
+    {
+      "transform": [
+        {"filter": "datum.Reason === 'Business' && datum.Year === '2025'"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dy": -28,
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#ff8a7a"
+      },
+      "encoding": {
+        "x": {
+          "field": "Reason",
+          "type": "nominal",
+          "sort": {"field": "Spend", "op": "sum", "order": "descending"}
+        },
+        "xOffset": {
+          "field": "Year",
+          "type": "nominal"
+        },
+        "y": {
+          "field": "Spend",
+          "type": "quantitative"
+        },
+        "text": {"value": "Only decline"}
+      }
+    }
+
+  ],
+
+  "config": {
+    "background": "transparent",
+    "view": {"stroke": null}
+  }
+}

@@ -1,0 +1,105 @@
+Region,Year,Metric,Value
+Sydney,2024,Trips,3529
+Sydney,2025,Trips,3820
+Sydney,2024,Nights,83589
+Sydney,2025,Nights,88192
+Sydney,2024,Expenditure,10904
+Sydney,2025,Expenditure,13734
+
+Melbourne,2024,Trips,2552
+Melbourne,2025,Trips,2653
+Melbourne,2024,Nights,70545
+Melbourne,2025,Nights,67877
+Melbourne,2024,Expenditure,8401
+Melbourne,2025,Expenditure,8837
+
+Destination Perth,2024,Trips,813
+Destination Perth,2025,Trips,1007
+Destination Perth,2024,Nights,25748
+Destination Perth,2025,Nights,35638
+Destination Perth,2024,Expenditure,2268
+Destination Perth,2025,Expenditure,2981
+
+Brisbane,2024,Trips,1275
+Brisbane,2025,Trips,1328
+Brisbane,2024,Nights,28073
+Brisbane,2025,Nights,27301
+Brisbane,2024,Expenditure,3105
+Brisbane,2025,Expenditure,3563
+
+Adelaide,2024,Trips,402
+Adelaide,2025,Trips,404
+Adelaide,2024,Nights,10974
+Adelaide,2025,Nights,12403
+Adelaide,2024,Expenditure,1134
+Adelaide,2025,Expenditure,1551
+
+Gold Coast,2024,Trips,635
+Gold Coast,2025,Trips,682
+Gold Coast,2024,Nights,8021
+Gold Coast,2025,Nights,10285
+Gold Coast,2024,Expenditure,1172
+Gold Coast,2025,Expenditure,1480
+
+Tropical North Queensland,2024,Trips,543
+Tropical North Queensland,2025,Trips,622
+Tropical North Queensland,2024,Nights,5157
+Tropical North Queensland,2025,Nights,5896
+Tropical North Queensland,2024,Expenditure,980
+Tropical North Queensland,2025,Expenditure,1218
+
+Canberra,2024,Trips,215
+Canberra,2025,Trips,199
+Canberra,2024,Nights,5431
+Canberra,2025,Nights,5614
+Canberra,2024,Expenditure,627
+Canberra,2025,Expenditure,587
+
+North Coast NSW,2024,Trips,292
+North Coast NSW,2025,Trips,291
+North Coast NSW,2024,Nights,3888
+North Coast NSW,2025,Nights,4607
+North Coast NSW,2024,Expenditure,266
+North Coast NSW,2025,Expenditure,327
+
+Sunshine Coast,2024,Trips,314
+Sunshine Coast,2025,Trips,301
+Sunshine Coast,2024,Nights,3942
+Sunshine Coast,2025,Nights,3664
+Sunshine Coast,2024,Expenditure,318
+Sunshine Coast,2025,Expenditure,475
+
+Hunter,2024,Trips,158
+Hunter,2025,Trips,156
+Hunter,2024,Nights,2946
+Hunter,2025,Nights,3130
+Hunter,2024,Expenditure,217
+Hunter,2025,Expenditure,221
+
+Darwin,2024,Trips,126
+Darwin,2025,Trips,143
+Darwin,2024,Nights,3461
+Darwin,2025,Nights,3060
+Darwin,2024,Expenditure,235
+Darwin,2025,Expenditure,244
+
+Australia's South West,2024,Trips,139
+Australia's South West,2025,Trips,150
+Australia's South West,2024,Nights,2171
+Australia's South West,2025,Nights,2651
+Australia's South West,2024,Expenditure,159
+Australia's South West,2025,Expenditure,193
+
+Hobart and the South,2024,Trips,211
+Hobart and the South,2025,Trips,235
+Hobart and the South,2024,Nights,2466
+Hobart and the South,2025,Nights,2543
+Hobart and the South,2024,Expenditure,357
+Hobart and the South,2025,Expenditure,508
+
+South Coast,2024,Trips,148
+South Coast,2025,Trips,144
+South Coast,2024,Nights,3106
+South Coast,2025,Nights,2247
+South Coast,2024,Expenditure,274
+South Coast,2025,Expenditure,229

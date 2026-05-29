@@ -1,0 +1,207 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 450,
+  "data": {
+    "url": "Int_table3.csv"
+  },
+  "params": [
+    {
+      "name": "MetricSelect",
+      "value": "Trips",
+      "bind": {
+        "input": "select",
+        "options": ["Trips", "Nights", "Expenditure"],
+        "labels": ["Trips", "Nights", "Revenue"],
+        "name": "Metric: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "name": "line_layer",
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5,
+        "interpolate": "linear"
+      },
+      "params": [
+        {
+          "name": "legendSelect",
+          "select": {"type": "point", "fields": ["State"]},
+          "bind": "legend"
+        }
+      ],
+      "transform": [
+        {
+          "filter": "datum.Metric == MetricSelect"
+        },
+        {
+          "fold": ["Value2024", "Value2025"],
+          "as": ["Year", "Value"]
+        },
+        {
+          "calculate": "replace(datum.Year, 'Value', '')",
+          "as": "YearLabel"
+        },
+        {
+          "calculate": "toNumber(datum.Value)",
+          "as": "Value"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "YearLabel",
+          "type": "ordinal",
+          "axis": {
+            "labelColor": "#d8e8f0",
+            "titleColor": "#d8e8f0",
+            "labelFontSize": 12,
+            "labelFontWeight": "bold",
+            "title": null,
+            "grid": false,
+            "domainColor": "rgba(255,255,255,0.2)"
+          }
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "axis": {
+            "labelColor": "#d8e8f0",
+            "titleColor": "#d8e8f0",
+            "gridColor": "rgba(255,255,255,0.06)",
+            "title": null
+          }
+        },
+        "color": {
+          "field": "State",
+          "type": "nominal",
+          "scale": {
+            "range": [
+              "#3dd6c8",
+              "#f0c97a",
+              "#70b8ff",
+              "#ff8a7a",
+              "#b38cff",
+              "#69e2a5",
+              "#ffd166",
+              "#ff9f9f"
+            ]
+          },
+          "legend": {
+            "title": "State",
+            "labelColor": "#d8e8f0",
+            "titleColor": "#d8e8f0",
+            "labelFontSize": 11,
+            "titleFontSize": 12
+          }
+        },
+        "detail": {
+          "field": "State"
+        },
+        "opacity": {
+          "condition": {
+            "param": "legendSelect",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.15
+        }
+      }
+    },
+    {
+      "name": "point_layer",
+      "transform": [
+        {
+          "filter": "datum.Metric == MetricSelect"
+        },
+        {
+          "fold": ["Value2024", "Value2025"],
+          "as": ["Year", "Value"]
+        },
+        {
+          "calculate": "replace(datum.Year, 'Value', '')",
+          "as": "YearLabel"
+        },
+        {
+          "calculate": "toNumber(datum.Value)",
+          "as": "Value"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 80
+      },
+      "encoding": {
+        "x": {"field": "YearLabel", "type": "ordinal"},
+        "y": {"field": "Value", "type": "quantitative"},
+        "color": {"field": "State", "type": "nominal"},
+        "opacity": {
+          "condition": {
+            "param": "legendSelect",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.15
+        },
+        "tooltip": [
+          {"field": "State", "type": "nominal"},
+          {"field": "Metric", "type": "nominal"},
+          {"field": "YearLabel", "type": "nominal", "title": "Year"},
+          {"field": "Value", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "name": "text_layer",
+      "transform": [
+        {
+          "filter": "datum.Metric == MetricSelect"
+        },
+        {
+          "fold": ["Value2024", "Value2025"],
+          "as": ["Year", "Value"]
+        },
+        {
+          "calculate": "replace(datum.Year, 'Value', '')",
+          "as": "YearLabel"
+        },
+        {
+          "calculate": "toNumber(datum.Value)",
+          "as": "Value"
+        },
+        {
+          "filter": "datum.YearLabel === '2025'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 10
+      },
+      "encoding": {
+        "x": {"field": "YearLabel", "type": "ordinal"},
+        "y": {"field": "Value", "type": "quantitative"},
+        "text": {
+          "field": "State",
+          "type": "nominal"
+        },
+        "color": {"field": "State", "type": "nominal"},
+        "opacity": {
+          "condition": {
+            "param": "legendSelect",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.15
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "view": {"stroke": null}
+  }
+}

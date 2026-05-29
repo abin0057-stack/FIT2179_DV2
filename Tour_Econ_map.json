@@ -1,0 +1,199 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 420,
+
+  "params": [
+    {
+      "name": "IndustrySelect",
+      "value": "All industries",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All industries",
+          "Accommodation",
+          "Cafes restaurants and takeaway food services",
+          "Air water and other transport",
+          "Other retail trade",
+          "Travel agency and tour operator services",
+          "Education and training",
+          "Other sports and recreation services",
+          "Ownership of dwellings",
+          "Clubs pubs taverns and bars",
+          "Motor vehicle hiring",
+          "Cultural services",
+          "Automotive fuel retailing",
+          "Taxi transport",
+          "Other road transport",
+          "Casinos and other gambling services",
+          "Rail transport"
+        ],
+        "name": "Industry: "
+      }
+    }
+  ],
+
+  "layer": [
+
+    {
+      "data": {
+        "url": "aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "STE_2021_AUST_GDA94"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "rgba(10,30,50,0.6)",
+        "stroke": "rgba(61,214,200,0.3)",
+        "strokeWidth": 1
+      }
+    },
+
+    {
+      "data": {
+        "url": "TS_Table6.csv"
+      },
+      "transform": [
+        {
+          "filter": "IndustrySelect === 'All industries' || datum.Industry === IndustrySelect"
+        },
+        {
+          "aggregate": [
+            {"op": "sum", "field": "GVA", "as": "TotalGVA"}
+          ],
+          "groupby": ["State"]
+        },
+        {
+          "lookup": "State",
+          "from": {
+            "data": {
+              "values": [
+                {"State": "New South Wales", "latitude": -32.5, "longitude": 146.5},
+                {"State": "Victoria", "latitude": -37.0, "longitude": 144.5},
+                {"State": "Queensland", "latitude": -22.0, "longitude": 144.0},
+                {"State": "South Australia", "latitude": -30.0, "longitude": 136.0},
+                {"State": "Western Australia", "latitude": -25.0, "longitude": 121.0},
+                {"State": "Tasmania", "latitude": -42.0, "longitude": 146.5},
+                {"State": "Northern Territory", "latitude": -19.0, "longitude": 133.0},
+                {"State": "Australian Capital Territory", "latitude": -35.5, "longitude": 149.0}
+              ]
+            },
+            "key": "State",
+            "fields": ["latitude", "longitude"]
+          }
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.75,
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "TotalGVA",
+          "type": "quantitative",
+          "scale": {"range": [100, 4000]},
+          "legend": {
+            "title": "GVA ($M)",
+            "labelColor": "#d8e8f0",
+            "titleColor": "#d8e8f0",
+            "labelFontSize": 11,
+            "titleFontSize": 12
+          }
+        },
+        "color": {
+          "field": "TotalGVA",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "tealblues"
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "State", "type": "nominal"},
+          {"field": "TotalGVA", "type": "quantitative", "title": "GVA ($M)", "format": ","}
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "url": "TS_Table6.csv"
+      },
+      "transform": [
+        {
+          "filter": "IndustrySelect === 'All industries' || datum.Industry === IndustrySelect"
+        },
+        {
+          "aggregate": [
+            {"op": "sum", "field": "GVA", "as": "TotalGVA"}
+          ],
+          "groupby": ["State"]
+        },
+        {
+          "lookup": "State",
+          "from": {
+            "data": {
+              "values": [
+                {"State": "New South Wales", "latitude": -32.5, "longitude": 146.5},
+                {"State": "Victoria", "latitude": -37.0, "longitude": 144.5},
+                {"State": "Queensland", "latitude": -22.0, "longitude": 144.0},
+                {"State": "South Australia", "latitude": -30.0, "longitude": 136.0},
+                {"State": "Western Australia", "latitude": -25.0, "longitude": 121.0},
+                {"State": "Tasmania", "latitude": -42.0, "longitude": 146.5},
+                {"State": "Northern Territory", "latitude": -19.0, "longitude": 133.0},
+                {"State": "Australian Capital Territory", "latitude": -35.5, "longitude": 149.0}
+              ]
+            },
+            "key": "State",
+            "fields": ["latitude", "longitude"]
+          }
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "dy": 18,
+        "color": "#d8e8f0"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "TotalGVA",
+          "type": "quantitative",
+          "format": ","
+        }
+      }
+    }
+
+  ],
+
+  "projection": {
+    "type": "mercator"
+  },
+
+  "config": {
+    "background": "transparent",
+    "view": {"stroke": null}
+  }
+}

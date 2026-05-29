@@ -1,0 +1,70 @@
+Industry,EmploymentSize,Count
+Tourism Characteristic Industries,Micro (1-4),14689
+Tourism Characteristic Industries,Small (5-19),9845
+Tourism Characteristic Industries,Medium (20-199),2913
+Tourism Characteristic Industries,Large (200+),169
+
+Accommodation,Micro (1-4),905
+Accommodation,Small (5-19),563
+Accommodation,Medium (20-199),186
+Accommodation,Large (200+),13
+
+Cafes, restaurants and takeaway food services,Micro (1-4),9149
+Cafes, restaurants and takeaway food services,Small (5-19),7105
+Cafes, restaurants and takeaway food services,Medium (20-199),1670
+Cafes, restaurants and takeaway food services,Large (200+),83
+
+Casinos and other gambling services,Micro (1-4),224
+Casinos and other gambling services,Small (5-19),64
+Casinos and other gambling services,Medium (20-199),10
+Casinos and other gambling services,Large (200+),3
+
+Clubs, pubs, taverns and bars,Micro (1-4),594
+Clubs, pubs, taverns and bars,Small (5-19),710
+Clubs, pubs, taverns and bars,Medium (20-199),552
+Clubs, pubs, taverns and bars,Large (200+),6
+
+Cultural services,Micro (1-4),896
+Cultural services,Small (5-19),188
+Cultural services,Medium (20-199),78
+Cultural services,Large (200+),4
+
+Motor vehicle hiring,Micro (1-4),224
+Motor vehicle hiring,Small (5-19),38
+Motor vehicle hiring,Medium (20-199),7
+Motor vehicle hiring,Large (200+),0
+
+Other sports and recreation services,Micro (1-4),1335
+Other sports and recreation services,Small (5-19),876
+Other sports and recreation services,Medium (20-199),276
+Other sports and recreation services,Large (200+),38
+
+Passenger transport,Micro (1-4),312
+Passenger transport,Small (5-19),129
+Passenger transport,Medium (20-199),80
+Passenger transport,Large (200+),14
+
+Taxi transport,Micro (1-4),279
+Taxi transport,Small (5-19),38
+Taxi transport,Medium (20-199),8
+Taxi transport,Large (200+),5
+
+Travel agency and tour operator services,Micro (1-4),771
+Travel agency and tour operator services,Small (5-19),134
+Travel agency and tour operator services,Medium (20-199),46
+Travel agency and tour operator services,Large (200+),3
+
+Tourism Connected Industries,Micro (1-4),14738
+Tourism Connected Industries,Small (5-19),6669
+Tourism Connected Industries,Medium (20-199),1678
+Tourism Connected Industries,Large (200+),129
+
+Automotive fuel retailing,Micro (1-4),279
+Automotive fuel retailing,Small (5-19),261
+Automotive fuel retailing,Medium (20-199),51
+Automotive fuel retailing,Large (200+),5
+
+Other retail trade,Micro (1-4),14459
+Other retail trade,Small (5-19),6408
+Other retail trade,Medium (20-199),1627
+Other retail trade,Large (200+),124

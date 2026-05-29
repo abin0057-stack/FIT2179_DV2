@@ -1,0 +1,113 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 500,
+  "height": 500,
+
+  "data": {
+    "url": "Dom_Table12.csv"
+  },
+
+  "transform": [
+    {
+      "filter": "datum.Quarter === 'December 2025'"
+    },
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "Value",
+          "order": "descending"
+        }
+      ]
+    }
+  ],
+
+  "encoding": {
+    "theta": {
+      "field": "Value",
+      "type": "quantitative",
+      "stack": true
+    },
+    "color": {
+      "field": "Category",
+      "type": "nominal",
+      "legend": {
+        "title": null,
+        "orient": "right",
+        "labelColor": "#d8e8f0",
+        "labelFontSize": 12,
+        "symbolSize": 180
+      },
+      "scale": {
+        "range": [
+          "#3dd6c8",
+          "#f0c97a",
+          "#70b8ff",
+          "#ff8a7a",
+          "#b38cff",
+          "#69e2a5",
+          "#ffd166",
+          "#ff9f9f",
+          "#8ec5ff",
+          "#57cc99",
+          "#c77dff",
+          "#ffb703",
+          "#90e0ef",
+          "#f28482",
+          "#84dcc6",
+          "#e9c46a",
+          "#a29bfe",
+          "#74c69d"
+        ]
+      }
+    }
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 100,
+        "outerRadius": 205,
+        "cornerRadius": 8,
+        "padAngle": 0.02,
+        "stroke": "#08131d",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "tooltip": [
+          { "field": "Category", "type": "nominal" },
+          { "field": "Value", "type": "quantitative" }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "radius": 180,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "fill": "#ffffff"
+      },
+      "encoding": {
+        "text": {
+          "field": "rank",
+          "type": "ordinal"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    }
+  }
+}
