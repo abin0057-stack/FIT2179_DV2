@@ -1,0 +1,98 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 500,
+  "height": 500,
+
+  "data": {
+    "url": "Dom_Table12.csv"
+  },
+
+  "transform": [
+    {
+      "filter": "datum.Quarter === 'December 2025'"
+    },
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "Value",
+          "order": "descending"
+        }
+      ]
+    }
+  ],
+
+  "encoding": {
+    "theta": {
+      "field": "Value",
+      "type": "quantitative",
+      "stack": true
+    },
+    "color": {
+      "field": "Category",
+      "type": "nominal",
+      "legend": {
+        "title": null,
+        "orient": "right",
+        "labelColor": "#d8e8f0",
+        "labelFontSize": 12,
+        "symbolSize": 180
+      },
+      "scale": {
+            "range": [
+              "#3dd6c8",
+              "#ff6b6b",
+              "#ffd93d",
+              "#6bcb77",
+              "#4d96ff",
+              "#ff922b",
+              "#cc5de8",
+              "#20c997",
+              "#f06595",
+              "#74c0fc",
+              "#a9e34b",
+              "#ff8787",
+              "#66d9e8",
+              "#ffa94d",
+              "#da77f2",
+              "#63e6be",
+              "#ffec99",
+              "#e599f7"
+            ]
+          }
+    }
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 100,
+        "outerRadius": 205,
+        "cornerRadius": 8,
+        "padAngle": 0.02,
+        "stroke": "#08131d",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "tooltip": [
+          { "field": "Category", "type": "nominal" },
+          { "field": "Value", "type": "quantitative" }
+        ]
+      }
+    }
+  ],
+
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": null
+    }
+  }
+}
