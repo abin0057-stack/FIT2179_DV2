@@ -1,0 +1,199 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": "container",
+  "height": 420,
+
+  "data": {
+    "url": "Int_table1.csv"
+  },
+
+  "layer": [
+
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 2,
+        "opacity": 0.5
+      },
+      "encoding": {
+        "y": {
+          "field": "Country",
+          "type": "nominal",
+          "sort": {"field": "2025", "order": "descending"},
+          "axis": {
+            "labelColor": "#d8e8f0",
+            "labelFontSize": 11,
+            "title": null,
+            "grid": false
+          }
+        },
+        "x": {
+          "field": "2024",
+          "type": "quantitative"
+        },
+        "x2": {
+          "field": "2025"
+        },
+        "color": {
+          "condition": {
+            "test": "datum['2025'] >= datum['2024']",
+            "value": "#3dd6c8"
+          },
+          "value": "#ff8a7a"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 110,
+        "opacity": 0.95
+      },
+      "encoding": {
+        "y": {
+          "field": "Country",
+          "type": "nominal",
+          "sort": {"field": "2025", "order": "descending"}
+        },
+        "x": {
+          "field": "2024",
+          "type": "quantitative",
+          "axis": {
+            "labelColor": "#d8e8f0",
+            "titleColor": "#d8e8f0",
+            "gridColor": "rgba(255,255,255,0.06)",
+            "title": "Visitor Trips (000s)"
+          }
+        },
+        "color": {"value": "#f0c97a"},
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "2024", "type": "quantitative", "title": "2024 Trips"},
+          {"field": "2025", "type": "quantitative", "title": "2025 Trips"}
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 110,
+        "opacity": 0.95
+      },
+      "encoding": {
+        "y": {
+          "field": "Country",
+          "type": "nominal",
+          "sort": {"field": "2025", "order": "descending"}
+        },
+        "x": {
+          "field": "2025",
+          "type": "quantitative",
+          "axis": {
+            "labelColor": "#d8e8f0",
+            "titleColor": "#d8e8f0",
+            "gridColor": "rgba(255,255,255,0.06)"
+          }
+        },
+        "color": {"value": "#3dd6c8"},
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "2024", "type": "quantitative", "title": "2024 Trips"},
+          {"field": "2025", "type": "quantitative", "title": "2025 Trips"}
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#3dd6c8"
+      },
+      "transform": [
+        {"filter": "datum.Country === 'China'"}
+      ],
+      "encoding": {
+        "y": {
+          "field": "Country",
+          "type": "nominal",
+          "sort": {"field": "2025", "order": "descending"}
+        },
+        "x": {
+          "field": "2025",
+          "type": "quantitative"
+        },
+        "text": {"value": " ^ Largest market, +17%"}
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#3dd6c8"
+      },
+      "transform": [
+        {"filter": "datum.Country === 'United Kingdom'"}
+      ],
+      "encoding": {
+        "y": {
+          "field": "Country",
+          "type": "nominal",
+          "sort": {"field": "2025", "order": "descending"}
+        },
+        "x": {
+          "field": "2025",
+          "type": "quantitative"
+        },
+        "text": {"value": " ^ Strongest Western growth, +19%"}
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#ff8a7a"
+      },
+      "transform": [
+        {"filter": "datum.Country === 'Vietnam'"}
+      ],
+      "encoding": {
+        "y": {
+          "field": "Country",
+          "type": "nominal",
+          "sort": {"field": "2025", "order": "descending"}
+        },
+        "x": {
+          "field": "2025",
+          "type": "quantitative"
+        },
+        "text": {"value": "    v  Only market to decline"}
+      }
+    }
+
+  ],
+
+  "resolve": {
+    "scale": {"y": "shared"}
+  },
+
+  "config": {
+    "background": "transparent",
+    "view": {"stroke": null}
+  }
+}
